@@ -7,10 +7,3 @@ export type Customer = {
   count: number
   totalAmount: number
 }
-
-export type CustomerListResponse = Customer[]
-
-export type CustomerListParams = {
-  sortBy?: 'asc' | 'desc'
-  name?: string
-}

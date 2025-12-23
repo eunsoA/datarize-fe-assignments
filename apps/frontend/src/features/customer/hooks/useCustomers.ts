@@ -1,6 +1,10 @@
 import { useQuery } from '@tanstack/react-query'
-import { getCustomers } from '@/features/customer/apis/getCustomers'
-import { CustomerListParams } from '@/features/customer/customer.types'
+import { getCustomers } from '@features/customer/apis/getCustomers'
+
+export type CustomerListParams = {
+  sortBy?: 'asc' | 'desc'
+  name?: string
+}
 
 /**
  * 고객 목록 데이터를 가져오는 TanStack Query hook

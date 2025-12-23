@@ -1,4 +1,5 @@
-import { CustomerListParams, CustomerListResponse } from '@/features/customer/customer.types'
+import { Customer } from '@features/customer/customer.types'
+import { CustomerListParams } from '@features/customer/hooks/useCustomers'
 import { API_CONFIG } from '@shared/config/api'
 
 /**
@@ -6,7 +7,7 @@ import { API_CONFIG } from '@shared/config/api'
  * @param params 쿼리 파라미터 (sortBy, name)
  * @returns 고객 목록 배열
  */
-export async function getCustomers(params?: CustomerListParams): Promise<CustomerListResponse> {
+export async function getCustomers(params?: CustomerListParams): Promise<Customer[]> {
   const searchParams = new URLSearchParams()
 
   if (params?.sortBy) {
