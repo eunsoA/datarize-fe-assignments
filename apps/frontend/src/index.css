@@ -163,3 +163,21 @@ input::-webkit-inner-spin-button {
 a {
   text-decoration: none;
 }
+
+svg {
+  outline: none;
+}
+
+svg:focus,
+svg:focus-visible {
+  outline: none;
+}
+
+svg * {
+  outline: none;
+}
+
+svg *:focus,
+svg *:focus-visible {
+  outline: none;
+}
