@@ -1,4 +1,5 @@
-import { PurchaseFrequencyParams, PurchaseFrequencyResponse } from '@/features/purchase/purchase.types'
+import { PurchaseFrequencyItem } from '@features/purchase/purchase.types'
+import { PurchaseFrequencyParams } from '@features/purchase/hooks/usePurchaseFrequency'
 import { API_CONFIG } from '@shared/config/api'
 
 /**
@@ -6,7 +7,7 @@ import { API_CONFIG } from '@shared/config/api'
  * @param params 쿼리 파라미터 (from, to - ISO 8601 형식)
  * @returns 가격대별 구매 빈도 배열
  */
-export async function getPurchaseFrequency(params?: PurchaseFrequencyParams): Promise<PurchaseFrequencyResponse> {
+export async function getPurchaseFrequency(params?: PurchaseFrequencyParams): Promise<PurchaseFrequencyItem[]> {
   const searchParams = new URLSearchParams()
 
   if (params?.from) {

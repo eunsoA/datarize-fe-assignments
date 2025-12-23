@@ -1,6 +1,10 @@
 import { useQuery } from '@tanstack/react-query'
 import { getPurchaseFrequency } from '@features/purchase/apis/getPurchaseFrequency'
-import { PurchaseFrequencyParams } from '@/features/purchase/purchase.types'
+
+export type PurchaseFrequencyParams = {
+  from?: string // ISO 8601 형식의 시작 날짜
+  to?: string // ISO 8601 형식의 종료 날짜
+}
 
 /**
  * 가격대별 구매 빈도 데이터를 가져오는 TanStack Query hook
