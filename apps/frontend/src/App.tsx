@@ -1,7 +1,14 @@
-import { Routes } from './pages/Routes'
+import { Routes } from '@pages/Routes'
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
+
+const queryClient = new QueryClient()
 
 function App() {
-  return <Routes />
+  return (
+    <QueryClientProvider client={queryClient}>
+      <Routes />
+    </QueryClientProvider>
+  )
 }
 
 export default App
