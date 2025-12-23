@@ -10,7 +10,7 @@ import {
 } from 'recharts'
 import styled from 'styled-components'
 import { colors } from '@shared/style'
-import { getBarColor } from './getBarColor'
+import { getBarColor } from '@features/purchase/utils/getBarColor'
 
 type BarChartData = {
   name: string
