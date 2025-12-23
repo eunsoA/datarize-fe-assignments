@@ -43,7 +43,7 @@ export function openModal({ title, content, onClose }: ModalConfig) {
 
   modalRoot!.render(
     <QueryClientProvider client={queryClient}>
-      <Modal isOpen={true} onClose={handleClose} title={title}>
+      <Modal onClose={handleClose} title={title}>
         {content}
       </Modal>
     </QueryClientProvider>,

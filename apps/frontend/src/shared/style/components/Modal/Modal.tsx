@@ -8,26 +8,23 @@ import { Flex } from '@shared/style/components/Flex/Flex'
 import cancelIcon from '/cancel.svg'
 
 type ModalProps = {
-  isOpen: boolean
   onClose: () => void
   title?: string
   children: React.ReactNode
 }
 
-const Overlay = styled.div.withConfig({
-  shouldForwardProp: (prop) => prop !== 'isOpen',
-})<{ isOpen: boolean }>`
+const Overlay = styled.div`
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
   background-color: rgba(0, 0, 0, 0.5);
-  display: ${({ isOpen }) => (isOpen ? 'flex' : 'none')};
+  display: flex;
   align-items: center;
   justify-content: center;
   z-index: 1000;
-  animation: ${({ isOpen }) => (isOpen ? 'fadeIn 0.2s ease-in-out' : 'none')};
+  animation: fadeIn 0.2s ease-in-out;
 
   @keyframes fadeIn {
     from {
@@ -39,9 +36,7 @@ const Overlay = styled.div.withConfig({
   }
 `
 
-const ModalContainer = styled.div.withConfig({
-  shouldForwardProp: (prop) => prop !== 'isOpen',
-})<{ isOpen: boolean }>`
+const ModalContainer = styled.div`
   background-color: ${colors.grey100};
   border-radius: 12px;
   padding: 20px 0;
@@ -55,7 +50,7 @@ const ModalContainer = styled.div.withConfig({
   display: flex;
   flex-direction: column;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
-  animation: ${({ isOpen }) => (isOpen ? 'slideUp 0.2s ease-in-out' : 'none')};
+  animation: slideUp 0.2s ease-in-out;
 
   @keyframes slideUp {
     from {
@@ -97,31 +92,26 @@ const ModalContent = styled.div`
   min-height: 0;
 `
 
-export function Modal({ isOpen, onClose, title = '', children }: ModalProps) {
+export function Modal({ onClose, title = '', children }: ModalProps) {
   useEffect(() => {
     const handleEscape = (e: KeyboardEvent) => {
-      if (e.key === 'Escape' && isOpen) {
+      if (e.key === 'Escape') {
         onClose()
       }
     }
 
-    if (isOpen) {
-      document.body.style.overflow = 'hidden'
-      document.addEventListener('keydown', handleEscape)
-    }
+    document.body.style.overflow = 'hidden'
+    document.addEventListener('keydown', handleEscape)
 
     return () => {
       document.body.style.overflow = 'unset'
       document.removeEventListener('keydown', handleEscape)
     }
-  }, [isOpen, onClose])
-
-  if (!isOpen) return null
+  }, [onClose])
 
   return createPortal(
-    <Overlay isOpen={isOpen} onClick={onClose}>
+    <Overlay onClick={onClose}>
       <ModalContainer
-        isOpen={isOpen}
         onClick={(e) => {
           e.stopPropagation()
         }}
