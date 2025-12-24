@@ -4,12 +4,11 @@
 
 ## 📋 목차
 
-- [과제 요구사항](#과제-요구사항)
-- [기술 스택](#기술-스택)
-- [설치 및 실행](#설치-및-실행)
-- [프로젝트 구조](#프로젝트-구조)
-- [구현 기능](#구현-기능)
-- [추가 구현 사항](#추가-구현-사항)
+- [과제 요구사항](#-과제-요구사항)
+- [기술 스택](#-기술-스택)
+- [프로젝트 구조](#-프로젝트-구조)
+- [구현 기능](#-구현-기능)
+- [추가 구현 사항](#-추가-구현-사항)
 
 ## 🎯 과제 요구사항
 
@@ -100,6 +99,8 @@ apps/
 - 단일 날짜 조회 가능
 - 가격대별 색상 구분 (상 : 초록, 중 : 주황, 하 : 보라)
 
+![1-purchase](https://github.com/user-attachments/assets/ca210227-9074-4fd0-aeb9-788aa3c160f4)
+
 <details>
 <summary><b>주요 파일</b></summary>
 
@@ -120,6 +121,9 @@ apps/
 - 검색 결과 초기화 기능
 - 테이블 형태의 데이터 표시
 
+![2-customers](https://github.com/user-attachments/assets/c8af4fa2-dceb-4bfd-b88b-0386b5aca65e)
+
+
 <details>
 <summary><b>주요 파일</b></summary>
 
@@ -139,6 +143,8 @@ apps/
 - 모달 외부 클릭/닫기 버튼으로 닫기 기능
 - 총 구매 금액 및 구매 건수 요약 정보
 
+![3-customer-detail](https://github.com/user-attachments/assets/933e51cb-b116-460b-bf78-570627cbd45e)
+
 <details>
 <summary><b>주요 파일</b></summary>
 
@@ -156,6 +162,9 @@ apps/
 - ErrorBoundary를 활용한 전역 에러 핸들링
 - API 에러 발생 시 사용자 친화적인 에러 메시지 표시
 - 재시도 기능 제공
+
+![4-storybook](https://github.com/user-attachments/assets/96892293-266b-48f8-ab97-7295f50580f9)
+
 
 <details>
 <summary><b>주요 파일</b></summary>
