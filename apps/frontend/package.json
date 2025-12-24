@@ -15,6 +15,7 @@
     "@tanstack/react-query": "^5.90.12",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
+    "react-error-boundary": "^6.0.0",
     "react-router-dom": "^7.11.0",
     "recharts": "^3.6.0",
     "styled-components": "^6.1.19"
@@ -38,6 +39,7 @@
     "eslint-plugin-react-hooks": "^4.6.2",
     "eslint-plugin-react-refresh": "^0.4.7",
     "msw": "^2.12.4",
+    "msw-storybook-addon": "^2.0.6",
     "storybook": "8.4.7",
     "typescript": "^5.2.2",
     "vite": "^5.3.4",
