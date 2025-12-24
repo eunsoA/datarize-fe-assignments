@@ -2,6 +2,8 @@ import { useState, useMemo } from 'react'
 import { useCustomers } from '@features/customer/hooks/useCustomers'
 import { CustomerTable } from '@pages/dashboard/CustomerSection/CustomerTableSection/CustomerTable'
 import { CustomerTableOption } from '@pages/dashboard/CustomerSection/CustomerTableSection/CustomerTableOption'
+import { CustomerTableSkeleton } from './CustomerTableSkeleton'
+import { ErrorFallback } from '@shared/style'
 
 export type SortField = 'id' | 'count' | 'totalAmount'
 export type SortOrder = 'asc' | 'desc'
@@ -11,7 +13,7 @@ export function CustomerTableSection() {
   const [sortField, setSortField] = useState<SortField>('id')
   const [sortOrder, setSortOrder] = useState<SortOrder>('asc')
 
-  const { data: customersData, isLoading, error } = useCustomers(searchName ? { name: searchName } : undefined)
+  const { data: customersData, isLoading, error, refetch } = useCustomers(searchName ? { name: searchName } : undefined)
 
   const sortedCustomers = useMemo(() => {
     if (!customersData) return []
@@ -45,18 +47,6 @@ export function CustomerTableSection() {
     setSortOrder(order)
   }
 
-  if (isLoading) {
-    return <div>로딩 중...</div>
-  }
-
-  if (error) {
-    return <div>에러 발생: {error instanceof Error ? error.message : 'Unknown error'}</div>
-  }
-
-  if (!customersData) {
-    return <div>고객 목록이 없습니다.</div>
-  }
-
   return (
     <>
       <CustomerTableOption
@@ -67,7 +57,14 @@ export function CustomerTableSection() {
         onSortFieldChange={handleSortFieldChange}
         onSortOrderChange={handleSortOrderChange}
       />
-      <CustomerTable customers={sortedCustomers} />
+
+      {isLoading && <CustomerTableSkeleton />}
+
+      {!isLoading && error && (
+        <ErrorFallback message="고객 목록을 불러오는데 실패했습니다." onRetry={() => refetch()} minHeight={300} />
+      )}
+
+      {!isLoading && !error && customersData && <CustomerTable customers={sortedCustomers} />}
     </>
   )
 }

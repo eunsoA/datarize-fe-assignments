@@ -1,25 +1,33 @@
-import { colors, Flex, ListRow, Text, Image, ListHeader, Border } from '@shared/style'
+import { colors, Flex, ListRow, Text, Image, ListHeader, Border, ErrorFallback } from '@shared/style'
 import { useCustomerPurchases } from '@features/customer/hooks/useCustomerPurchases'
 import { Customer } from '@features/customer/customer.types'
 import { formatDate } from '@features/customer/utils/formatDate'
+import { CustomerDetailSkeleton } from './CustomerDetailSkeleton'
 
 type CustomerDetailSectionProps = {
   customer: Customer
 }
 
 export function CustomerDetailSection({ customer }: CustomerDetailSectionProps) {
-  const { data: purchasesData, isLoading, error } = useCustomerPurchases(customer.id)
+  const { data: purchasesData, isLoading, error, refetch } = useCustomerPurchases(customer.id)
 
   if (isLoading) {
-    return <div>구매 내역 로딩 중...</div>
+    return <CustomerDetailSkeleton />
   }
 
   if (error) {
-    return <div>에러 발생: {error instanceof Error ? error.message : 'Unknown error'}</div>
+    return (
+      <ErrorFallback
+        message="고객 구매 상세 내역을 불러오는데 실패했습니다."
+        onRetry={() => refetch()}
+        minHeight={300}
+      />
+    )
   }
 
-  if (!purchasesData) {
-    return <div>구매 내역이 없습니다.</div>
+  // 데이터가 없을 때
+  if (!purchasesData || purchasesData.length === 0) {
+    return <div style={{ padding: '40px', textAlign: 'center', color: '#666' }}>해당 고객의 구매 내역이 없습니다.</div>
   }
 
   return (
