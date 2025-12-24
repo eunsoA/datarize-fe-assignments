@@ -1,9 +1,7 @@
-import { useState, useMemo } from 'react'
-import { usePurchaseFrequency } from '@features/purchase/hooks/usePurchaseFrequency'
-import { formatDateToISO } from '@features/purchase/utils/formatDateToISO'
-import { formatPriceRange } from '@features/purchase/utils/formatPriceRange'
+import { useState } from 'react'
+import { ErrorBoundary } from '@shared/error/ErrorBoundary/ErrorBoundary'
 import { DateRangePicker } from '@features/purchase/components/DateRangePicker/DateRangePicker'
-import { BarChart } from '@features/purchase/components/BarChart/BarChart'
+import { PurchaseChart } from './PurchaseChart'
 
 const DEFAULT_START_DATE = '2024-07-01'
 const DEFAULT_END_DATE = '2024-07-31'
@@ -12,35 +10,11 @@ export function PurchaseChartSection() {
   const [startDate, setStartDate] = useState<string>(DEFAULT_START_DATE)
   const [endDate, setEndDate] = useState<string>(DEFAULT_END_DATE)
 
-  const {
-    data: purchaseFrequencyData,
-    isLoading,
-    error,
-  } = usePurchaseFrequency({
-    from: formatDateToISO(startDate),
-    to: formatDateToISO(endDate),
-  })
-
   const handleReset = () => {
     setStartDate(DEFAULT_START_DATE)
     setEndDate(DEFAULT_END_DATE)
   }
 
-  const chartData = useMemo(() => {
-    if (!purchaseFrequencyData) return []
-    return purchaseFrequencyData.map((item) => ({
-      name: formatPriceRange(item.range),
-      value: item.count,
-    }))
-  }, [purchaseFrequencyData])
-
-  if (isLoading) {
-    return <div>로딩 중...</div>
-  }
-
-  if (error) {
-    return <div>에러 발생: {error instanceof Error ? error.message : 'Unknown error'}</div>
-  }
   return (
     <>
       <DateRangePicker
@@ -50,11 +24,9 @@ export function PurchaseChartSection() {
         onEndDateChange={setEndDate}
         onReset={handleReset}
       />
-      {chartData.length > 0 ? (
-        <BarChart data={chartData} />
-      ) : (
-        <div style={{ padding: '20px', textAlign: 'center', color: '#666' }}>데이터가 없습니다.</div>
-      )}
+      <ErrorBoundary errorMessage="가격대별 구매 빈도 차트를 불러오는데 실패했습니다." minHeight={400}>
+        <PurchaseChart startDate={startDate} endDate={endDate} />
+      </ErrorBoundary>
     </>
   )
 }
