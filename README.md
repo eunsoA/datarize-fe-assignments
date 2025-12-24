@@ -121,8 +121,7 @@ apps/
 - 검색 결과 초기화 기능
 - 테이블 형태의 데이터 표시
 
-![2-customers](https://github.com/user-attachments/assets/c8af4fa2-dceb-4bfd-b88b-0386b5aca65e)
-
+![2-1](https://github.com/user-attachments/assets/3df4fe18-06e6-4118-be27-dea106f4a2c8)
 
 <details>
 <summary><b>주요 파일</b></summary>
@@ -163,8 +162,7 @@ apps/
 - API 에러 발생 시 사용자 친화적인 에러 메시지 표시
 - 재시도 기능 제공
 
-![4-storybook](https://github.com/user-attachments/assets/96892293-266b-48f8-ab97-7295f50580f9)
-
+![0](https://github.com/user-attachments/assets/8ff21552-90f2-455f-8350-41a2e721dd21)
 
 <details>
 <summary><b>주요 파일</b></summary>
@@ -181,6 +179,8 @@ apps/
 
 - 공통 컴포넌트(Button, Input, Table, Modal 등)를 Storybook으로 문서화
 - 컴포넌트별 다양한 상태(variant, size, disabled 등)를 시각적으로 테스트
+
+![4-storybook-1](https://github.com/user-attachments/assets/a0d0f9a9-d36b-47d8-804a-e741fd323f3d)
 
 <details>
 <summary><b>주요 파일</b></summary>
