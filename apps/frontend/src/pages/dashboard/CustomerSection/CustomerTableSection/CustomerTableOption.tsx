@@ -1,5 +1,5 @@
 import { Flex, ListRow, Select } from '@shared/style'
-import { SortField, SortOrder } from '@features/customer/components/CustomerTableSection/CustomerTableSection'
+import { SortField, SortOrder } from '@pages/dashboard/CustomerSection/CustomerTableSection/CustomerTableSection'
 import { SearchBar } from '@features/customer/components/SearchBar/SearchBar'
 
 type CustomerTableOptionProps = {

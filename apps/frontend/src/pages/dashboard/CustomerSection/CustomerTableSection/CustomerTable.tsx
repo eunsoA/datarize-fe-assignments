@@ -11,7 +11,7 @@ import {
 } from '@shared/style'
 import { openModal } from '@shared/utils/openModal'
 import { Customer } from '@features/customer/customer.types'
-import { CustomerDetailSection } from '@features/customer/components/CustomerDetailSection/CustomerDetailSection'
+import { CustomerDetailSection } from '@pages/dashboard/CustomerSection/CustomerDetailSection/CustomerDetailSection'
 
 type CustomerTableProps = {
   customers: Customer[]

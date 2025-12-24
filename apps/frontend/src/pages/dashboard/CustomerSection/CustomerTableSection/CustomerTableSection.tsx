@@ -1,7 +1,7 @@
 import { useState, useMemo } from 'react'
 import { useCustomers } from '@features/customer/hooks/useCustomers'
-import { CustomerTable } from '@features/customer/components/CustomerTableSection/CustomerTable'
-import { CustomerTableOption } from '@features/customer/components/CustomerTableSection/CustomerTableOption'
+import { CustomerTable } from '@pages/dashboard/CustomerSection/CustomerTableSection/CustomerTable'
+import { CustomerTableOption } from '@pages/dashboard/CustomerSection/CustomerTableSection/CustomerTableOption'
 
 export type SortField = 'id' | 'count' | 'totalAmount'
 export type SortOrder = 'asc' | 'desc'

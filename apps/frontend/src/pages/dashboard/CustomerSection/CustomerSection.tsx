@@ -1,5 +1,5 @@
 import { ListHeader } from '@shared/style'
-import { CustomerTableSection } from '@features/customer/components/CustomerTableSection/CustomerTableSection'
+import { CustomerTableSection } from '@pages/dashboard/CustomerSection/CustomerTableSection/CustomerTableSection'
 
 export function CustomerSection() {
   return (
