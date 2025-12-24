@@ -12,6 +12,8 @@ export { Input } from './components/Input/Input'
 export { Select } from './components/Select/Select'
 export { Image } from './components/Image/Image'
 export { Modal } from './components/Modal/Modal'
+export { Skeleton } from './components/Skeleton/Skeleton'
+export { ErrorFallback } from './components/ErrorFallback/ErrorFallback'
 
 // Tokens
 export { colors } from './token/colors'
